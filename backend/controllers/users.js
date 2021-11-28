@@ -2,19 +2,19 @@ const User = require("../models/User");
 const conn = require("../connection");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const crypt = require('crypto-js');
+//const crypt = require('crypto-js');
 require('dotenv').config();
 
 
 //fonction qui va crypté le mot de passe qui va le prendre et creer un nouveau user 
 //avec ce mot de passe et l'email et va l'enregistrer dans la base de donnée
 exports.signup = (req, res, next) => {
-    const cryptoEmail = crypt.MD5(req.body.email).toString();
+    //const cryptoEmail = crypt.MD5(req.body.email).toString();
     bcrypt.hash(req.body.password, 10)
         .then((hash) => {
             const user = new User({
                 username: req.body.username,
-                email: cryptoEmail,
+                email: req.body.email,
                 password: hash,
                 isAdmin: 0,
             });
@@ -36,11 +36,11 @@ exports.signup = (req, res, next) => {
 
 //fonction qui permet au utilisateur existant de se connecter
 exports.login = async (req, res, next) => {
-    const cryptoEmail = crypt.MD5(req.body.email).toString();
+    //const cryptoEmail = crypt.MD5(req.body.email).toString();
     //let status = '';
     //console.table([req.body.email, req.body.password]);
-    if (cryptoEmail && req.body.password) {
-        conn.query('SELECT * FROM user WHERE email= ?', cryptoEmail, (error, results, fields) => {
+    if ( /*cryptoEmail*/ req.body.email && req.body.password) {
+        conn.query('SELECT * FROM user WHERE email= ?', /*cryptoEmail*/ req.body.email, (error, results, fields) => {
             if (results.length > 0) {
                 //bcrypt va comparé le mot de passe que l'utilisateur va entrer avec ce qui est déja enregistrer avec compare
                 bcrypt.compare(req.body.password, results[0].password)
@@ -52,7 +52,7 @@ exports.login = async (req, res, next) => {
                             });
                         } else {
                             //confirmation User connecté
-                            console.log(cryptoEmail, "s'est connecté");
+                            console.log(req.body.email /*cryptoEmail*/ , "s'est connecté");
                             //on décris le niveau d'acces du membre
                             if (results[0].isAdmin === 1) {
                                 status = 'administrateur';
@@ -131,8 +131,8 @@ exports.getOneUser = (req, res, next) => {
 
 // fonction qui permet de modifier les informations de l'utilisateur
 exports.modifyUser = (req, res, next) => {
-    const cryptoEmail = crypt.MD5(req.body.email).toString();
-    const email = cryptoEmail;
+    //const cryptoEmail = crypt.MD5(req.body.email).toString();
+    const email = req.body.email /*cryptoEmail*/ ;
     const id = req.params.id;
     let password = req.body.password;
     if (!email || !password) {

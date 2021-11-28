@@ -114,7 +114,7 @@ export default {
             this.$router.push("/Home");
           })
           .catch((error) => {
-            console.log(error);
+            console.log(error, Response);
             document.getElementById("notfound").innerHTML =
               "Utilisateur non trouvé, veuillez vérifier vos identifiants";
           });

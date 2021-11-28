@@ -12,9 +12,6 @@ const userRoutes = require('./routes/user');
 //import de dotenv pour gérer des variables cachées  pour sécuriser les infos admin
 require('dotenv').config();
 
-
-
-
 //Cors système de sécurité qui empèches les requètes malveillante, ont doit le parametrer avec des headers pour autorisé l'utilisateur a utiliser l'api
 app.use((req, res, next) => {
     //tout le monde peut y acceder avec l'étoile
@@ -27,8 +24,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Sanitize Middleware (Inyection Attacks)
-app.use(sanitizeMiddleware());
 app.use(bodyParser.json());
 app.use(helmet());
 app.use('/images', express.static(path.join(__dirname, 'images')));
