@@ -9,6 +9,7 @@ const helmet = require("helmet");
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
+const commRoutes = require('./routes/comment');
 
 //import de dotenv pour gérer des variables cachées  pour sécuriser les infos admin
 require('dotenv').config();
@@ -30,5 +31,6 @@ app.use(helmet());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
 app.use('/api/post', postRoutes);
+app.use('/api/comm', commRoutes);
 
 module.exports = app;
