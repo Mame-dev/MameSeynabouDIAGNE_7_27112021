@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const helmet = require("helmet");
 
 const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
 
 //import de dotenv pour gérer des variables cachées  pour sécuriser les infos admin
 require('dotenv').config();
@@ -28,5 +29,6 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', userRoutes);
+app.use('/api/post', postRoutes);
 
 module.exports = app;

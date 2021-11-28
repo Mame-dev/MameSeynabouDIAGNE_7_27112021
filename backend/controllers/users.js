@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const conn = require("../connection");
+const mysql = require('mysql2');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 //const crypt = require('crypto-js');
