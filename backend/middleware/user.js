@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     const userId = decodedToken.userId;
 
     conn.query('SELECT * FROM user WHERE id =?', req.params.id, (error, result) => {
-        if ((result[0].id === userId) || result.isAdmin === 1) {
+        if ((result[0].id === userId) || result[0].isAdmin === 1) {
             console.log("action autorisé");
             next();
         } else {

@@ -43,6 +43,7 @@
 import VueJwtDecode from "vue-jwt-decode";
 export default {
   name: "Nav",
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       usersid: VueJwtDecode.decode(localStorage.getItem("token")).userId,

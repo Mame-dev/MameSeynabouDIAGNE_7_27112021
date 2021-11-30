@@ -69,6 +69,7 @@ export default {
   components: {
     Footer,
   },
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       email: "",
@@ -102,6 +103,7 @@ export default {
         const user = {
           email: email,
           password: password,
+          isAdmin: [],
         };
         axios
           .post(this.$localhost + "api/auth/login", user, {

@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header id="header">
+    <!--<header id="header">
       <img class="logo" alt="Vue logo" src="#" />
-    </header>
+    </header>-->
     <div id="conn-connected"></div>
     <router-view />
   </div>
@@ -10,6 +10,7 @@
 <script>
 import axios from "axios";
 export default {
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       conn: "",
@@ -19,7 +20,6 @@ export default {
     axios
       .get(this.$localhost + "api/")
       .then((response) => (this.conn = response.data))
-      //.catch(error => console.log('Il semblerait que la base de données ne soit pas connectée, réessayez plus tard'))
       .catch((error) => {
         console.log(error);
         document.getElementById("conn-connected").innerHTML =

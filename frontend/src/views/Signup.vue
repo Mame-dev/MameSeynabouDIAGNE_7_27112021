@@ -81,6 +81,7 @@ export default {
   components: {
     Footer,
   },
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       email: "",
@@ -116,6 +117,7 @@ export default {
       this.submited = true;
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        //définition des valeurs d'enregistrement
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const username = document.querySelector("#username").value;

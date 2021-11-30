@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const conn = require("../connection");
-const mysql = require('mysql2');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 //const crypt = require('crypto-js');
@@ -56,7 +55,7 @@ exports.login = async (req, res, next) => {
                             console.log(req.body.email /*cryptoEmail*/ , "s'est connecté");
                             //on décris le niveau d'acces du membre
                             if (results[0].isAdmin === 1) {
-                                status = 'administrateur';
+                                status = 'Administrateur';
                             } else {
                                 status = 'membre';
                             }
@@ -68,12 +67,11 @@ exports.login = async (req, res, next) => {
                                 token: jwt.sign({
                                     userId: results[0].id,
                                     username: results[0].username,
-                                    isAdmin: results[0].isAdmin
+                                    isAdmin: results[0].isAdmin,
                                 }, process.env.DB_TOKEN, {
                                     expiresIn: '24h'
                                 })
                             });
-
                         }
                     });
             } else {

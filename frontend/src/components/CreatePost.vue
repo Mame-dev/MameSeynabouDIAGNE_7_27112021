@@ -4,20 +4,51 @@
       <form class="px-4 py-3 Post" id="formpost" encType="multipart/form-data">
         <div class="form-group">
           <label for="title">Titre</label>
-          <input type="text" class="form-control" id="title" v-model="title" placeholder="votre titre" aria-required="true" required /><br>
-          <span class="error" v-if="(!$v.title.required && $v.title.$dirty)">Veuillez ajouter un titre</span>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            v-model="title"
+            placeholder="votre titre"
+            aria-required="true"
+            required
+          /><br />
+          <span class="error" v-if="!$v.title.required && $v.title.$dirty"
+            >Veuillez ajouter un titre</span
+          >
         </div>
         <div class="form-group">
           <label for="content">Texte</label>
-          <textarea class="form-control textarea " v-model="content" rows="3" id="content" placeholder="votre texte et image " aria-required="true" required></textarea>
+          <textarea
+            class="form-control textarea"
+            v-model="content"
+            rows="3"
+            id="content"
+            placeholder="votre texte et image "
+            aria-required="true"
+            required
+          ></textarea>
         </div>
         <div class="form-group">
-          <label class="sr-only" for="image" title="image" role="button">image</label>
-          <input type="file" accept=".png, .jpg, .jpeg, .gif, .webp" v-on:change="onSelect" ref="file" aria-required="true" id="image" />
+          <label class="sr-only" for="image" title="image" role="button"
+            >image</label
+          >
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg, .gif, .webp"
+            v-on:change="onSelect"
+            ref="file"
+            aria-required="true"
+            id="image"
+          />
         </div>
-        <span class="error" v-if="(!$v.content.required && $v.content.$dirty)">Veuillez ajouter une image et un texte</span><br><br>
+        <span class="error" v-if="!$v.content.required && $v.content.$dirty"
+          >Veuillez ajouter une image et un texte</span
+        ><br /><br />
         <span id="notfound" class="error"> </span>
-        <button type="submit" class="btn btn-danger signup" @click="Postform()">Publier</button>
+        <button type="submit" class="btn btn-danger signup" @click="Postform()">
+          Publier
+        </button>
       </form>
     </div>
   </main>
@@ -29,6 +60,7 @@ import { required } from "vuelidate/lib/validators";
 import VueJwtDecode from "vue-jwt-decode";
 export default {
   name: "CreatePost",
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       title: "",
@@ -72,6 +104,7 @@ export default {
         }
         axios
           .post(this.$localhost + "api/post/create", formData, {
+            //récupération du token
             headers: {
               Authorization: "bearer " + token,
             },

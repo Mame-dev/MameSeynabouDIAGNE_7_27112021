@@ -41,6 +41,7 @@
 <script>
 import axios from "axios";
 import VueJwtDecode from "vue-jwt-decode";
+
 export default {
   name: "AllPost",
   data() {
@@ -57,12 +58,14 @@ export default {
   methods: {
     async getAllPost() {
       const token = localStorage.getItem("token");
+
       if (token) {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       } else {
         axios.defaults.headers.common["Authorization"] = null;
         this.$router.push("/");
       }
+
       axios
         .get(this.$localhost + "api/post/", {
           headers: {
@@ -118,3 +121,6 @@ export default {
   }
 }
 </style>
+
+
+

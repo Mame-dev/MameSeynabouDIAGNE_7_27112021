@@ -91,6 +91,7 @@ export default {
     Nav,
     Footer,
   },
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       users: [],
@@ -140,6 +141,7 @@ export default {
       }
       axios
         .get(this.$localhost + "api/auth/user/" + iduser, {
+          //récupération du token
           headers: {
             Authorization: "bearer " + token,
           },
@@ -158,6 +160,7 @@ export default {
         .delete(this.$localhost + "api/auth/delete/" + idUser, {
           headers: {
             "Content-Type": "application/json",
+            //récupération du token
             Authorization: "bearer " + token,
           },
         })
@@ -187,6 +190,7 @@ export default {
           .post(this.$localhost + "api/auth/update/" + idUser, users, {
             headers: {
               "Content-Type": "application/json",
+              //récupération du token
               Authorization: "bearer " + token,
             },
           })

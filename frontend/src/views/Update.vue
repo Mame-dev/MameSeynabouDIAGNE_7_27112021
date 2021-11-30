@@ -72,6 +72,7 @@ export default {
     Nav,
     Footer,
   },
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       title: "",
@@ -111,6 +112,7 @@ export default {
         formData.append("user_id", userId);
         axios
           .post(this.$localhost + "api/post/update/" + idPost, formData, {
+            //récupération du token
             headers: {
               Authorization: "bearer " + token,
             },
@@ -130,6 +132,7 @@ export default {
       const idPost = this.$route.params.id;
       axios
         .delete(this.$localhost + "api/post/delete/" + idPost, {
+          //récupération du token
           headers: {
             Authorization: "bearer " + token,
           },

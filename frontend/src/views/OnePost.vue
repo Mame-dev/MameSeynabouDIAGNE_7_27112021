@@ -163,6 +163,7 @@ export default {
     Nav,
     Footer,
   },
+  //L'état des données se trouvent dans l'objet "data"
   data() {
     return {
       comment: "",
@@ -260,6 +261,7 @@ export default {
       const comment_id = div1.getAttribute("id");
       axios
         .delete(this.$localhost + "api/comm/delete/" + comment_id, {
+          //récupération du token
           headers: {
             Authorization: "bearer " + token,
           },
