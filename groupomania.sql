@@ -33,7 +33,7 @@ CREATE TABLE `comment` (
   KEY `fk_Comment_post1_idx` (`post_id`),
   CONSTRAINT `fk_Comment_post1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Comment_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `comment` (
 --
 
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (1,'merci =)','2021-11-30 20:24:49',7,1);
+INSERT INTO `comment` VALUES (1,'merci =)','2021-11-30 20:24:49',7,1),(2,'merci a toi','2021-12-01 12:22:08',9,1),(3,'super outil !!','2021-12-01 12:38:36',8,1),(4,'Tout le mérite te revient Francise','2021-12-01 12:39:19',8,3);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `post` (
   PRIMARY KEY (`id`),
   KEY `fk_post_user_idx` (`user_id`),
   CONSTRAINT `fk_post_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `post` (
 --
 
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` VALUES (1,'welcome','bienvenue a tous','http://localhost:3000/images/126091988-abstrait-de-connexion-réseau-avec-des-formes-polygonales-de-ligne-et-un-dessin-vectoriel.jpeg1638133509866.jpg1638300101505.jpg','2021-11-30 20:21:41',6);
+INSERT INTO `post` VALUES (1,'welcome','bienvenue a tous','http://localhost:3000/images/126091988-abstrait-de-connexion-réseau-avec-des-formes-polygonales-de-ligne-et-un-dessin-vectoriel.jpeg1638133509866.jpg1638300101505.jpg','2021-11-30 20:21:41',6),(3,'Congrès','Merci à toute l\'équipe pour la réussite de ce congrès, prochaine rendez-vous à Bordeaux.','http://localhost:3000/images/congrès.jpeg1638358618713.jpg','2021-12-01 12:36:58',7),(4,'Birthday','Une année de plus auprès de vous','http://localhost:3000/images/135161665.jpeg1638358837458.jpg','2021-12-01 12:40:37',8);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 --
@@ -88,7 +88,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `user` (
 --
 
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (6,'admin@admin.com','Admin','$2b$10$ugV38SOAEhpi/0MYIADhRe0cc/Hah3L5bmJ2jSNfMLse5OxmgJL9y',1),(7,'lamarquise.francise@gmail.com','Lamarquise Francise','$2b$10$T1glhRmCH1.wvTNwaWKXCeEM7dgDc63pneIdXXsXnGPH2UBN7G9Oi',0);
+INSERT INTO `user` VALUES (6,'admin@admin.com','Admin','$2b$10$ugV38SOAEhpi/0MYIADhRe0cc/Hah3L5bmJ2jSNfMLse5OxmgJL9y',1),(7,'lamarquise.francise@gmail.com','Lamarquise Francise','$2b$10$T1glhRmCH1.wvTNwaWKXCeEM7dgDc63pneIdXXsXnGPH2UBN7G9Oi',0),(8,'alex.marais@yahoo.fr','Marais Alex','$2b$10$Fb8hKDgVaR/wlZPuiaHgTeeCgGeOfzLBRkkgzmz2D476fW3uTvLQC',0),(9,'sylvie.rotard@wanadoo.com','Rotard Sylvie','$2b$10$.MJw8ENoPoSV5wUnId7U9OcmTXAOCbHVULPIDnGrYpVdSp/jRchH.',0),(10,'magalie.gayet@laposte.net','Gayet Magalie','$2b$10$n9rWHxHB.8YnQRYodlPGg.S0U3jwKrnCGlYBP/eObJ3g4d14Vei4m',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -108,4 +108,4 @@ INSERT INTO `user` VALUES (6,'admin@admin.com','Admin','$2b$10$ugV38SOAEhpi/0MYI
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30 21:51:14
+-- Dump completed on 2021-12-01 13:36:51
